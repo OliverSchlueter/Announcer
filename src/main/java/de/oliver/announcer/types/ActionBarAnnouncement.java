@@ -10,8 +10,8 @@ public class ActionBarAnnouncement extends Announcement implements Loopable {
 
     private boolean paused;
 
-    public ActionBarAnnouncement(String name, Component[] messages) {
-        super(name, messages);
+    public ActionBarAnnouncement(String name, Component message) {
+        super(name, new Component[]{message});
     }
 
     @Override

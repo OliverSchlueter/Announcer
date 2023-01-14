@@ -23,27 +23,9 @@ public class Announcer extends JavaPlugin {
     public void onEnable() {
         getCommand("Announcer").setExecutor(new AnnouncerCMD());
 
-        ChatAnnouncement chatAnnouncement1 = new ChatAnnouncement("store", new Component[]{
-                MiniMessage.miniMessage().deserialize("<rainbow>Hello world!</rainbow>"),
-                MiniMessage.miniMessage().deserialize("<rainbow>Test 1 2 3</rainbow>"),
-        });
-
-        ChatAnnouncement chatAnnouncement2 = new ChatAnnouncement("store2", new Component[]{
-                MiniMessage.miniMessage().deserialize("<rainbow>moin moin</rainbow>"),
-                MiniMessage.miniMessage().deserialize("<rainbow>kekw</rainbow>"),
-        });
-
-
-        ActionBarAnnouncement actionBarAnnouncement1 = new ActionBarAnnouncement("pog", new Component[]{
-           MiniMessage.miniMessage().deserialize("<red>Hello world")
-        });
-
-        AnnouncementManager.addAnnouncement(chatAnnouncement1);
-        AnnouncementManager.addAnnouncement(chatAnnouncement2);
-        AnnouncementManager.addAnnouncement(actionBarAnnouncement1);
+        AnnouncementManager.loadAnnouncements();
 
         Bukkit.getScheduler().runTaskTimer(instance, loop, AnnouncementManager.getInterval(), AnnouncementManager.getInterval());
-
     }
 
     @Override

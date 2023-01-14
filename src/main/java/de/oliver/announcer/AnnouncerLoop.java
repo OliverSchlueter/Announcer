@@ -1,27 +1,36 @@
 package de.oliver.announcer;
 
+import java.util.LinkedList;
+import java.util.Queue;
+
 public class AnnouncerLoop implements Runnable {
 
-    private final Announcement announcement;
-    private final Loopable loopable;
+    private final Queue<Announcement> announcements;
 
-    public AnnouncerLoop(Announcement announcement, Loopable loopable) {
-        this.announcement = announcement;
-        this.loopable = loopable;
+    public AnnouncerLoop() {
+        this.announcements = new LinkedList<>();
     }
 
     @Override
     public void run() {
-        if(!loopable.isPaused()) {
+        if(announcements.isEmpty()){
+            return;
+        }
+
+        Announcement announcement = announcements.poll();
+
+        if(!(announcement instanceof Loopable loopable)){
+            return;
+        }
+
+        if(!loopable.isPaused()){
             announcement.send();
         }
+
+        announcements.offer(announcement);
     }
 
-    public Announcement getAnnouncement() {
-        return announcement;
-    }
-
-    public Loopable getLoopable() {
-        return loopable;
+    public Queue<Announcement> getAnnouncements() {
+        return announcements;
     }
 }

@@ -9,6 +9,9 @@ public class AnnouncementManager {
 
     public static void addAnnouncement(Announcement announcement){
         announcements.put(announcement.getName().toLowerCase(), announcement);
+        if(announcement instanceof Loopable){
+            Announcer.getInstance().getLoop().getAnnouncements().offer(announcement);
+        }
     }
 
     public static void removeAnnouncement(String name){

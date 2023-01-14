@@ -3,3 +3,7 @@ version: '${version}'
 main: de.oliver.announcer.Announcer
 api-version: 1.19
 author: OliverHD
+commands:
+  Announcer:
+    permission: announcer.admin
+    description: main command for the announcer plugin

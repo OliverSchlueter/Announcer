@@ -2,6 +2,7 @@ package de.oliver.announcer;
 
 import de.oliver.announcer.types.ActionBarAnnouncement;
 import de.oliver.announcer.types.ChatAnnouncement;
+import de.oliver.announcer.types.TitleAnnouncement;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -74,6 +75,7 @@ public class AnnouncementManager {
                     switch (type.toLowerCase()) {
                         case "chat" -> announcement = new ChatAnnouncement(name, messagesParsed);
                         case "actionbar" -> announcement = new ActionBarAnnouncement(name, messagesParsed[0]);
+                        case "title" -> announcement = new TitleAnnouncement(name, messagesParsed[0], messagesParsed[1]);
                         default -> throw new IllegalStateException("Invalid announcer-type provided for " + name);
                     }
 
@@ -95,6 +97,12 @@ public class AnnouncementManager {
             config.set("announcements.store.type", "actionbar");
             config.set("announcements.store.messages", new String[]{
                     "<dark_red>Visit our store at store.placeholder.com</dark_red>"
+            });
+
+            config.set("announcements.event.type", "title");
+            config.set("announcements.event.messages", new String[]{
+                    "<rainbow>A event has started!</rainbow>",
+                    "<blue>Join now with /event</blue>"
             });
         }
 

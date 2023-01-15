@@ -2,6 +2,7 @@ package de.oliver.announcer;
 
 import de.oliver.announcer.types.ActionBarAnnouncement;
 import de.oliver.announcer.types.ChatAnnouncement;
+import de.oliver.announcer.types.JoinAnnouncement;
 import de.oliver.announcer.types.TitleAnnouncement;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.MiniMessage;
@@ -13,6 +14,8 @@ public class AnnouncementManager {
 
     private static int interval = 10; // in seconds
     private static final Map<String, Announcement> announcements = new HashMap<>();
+
+    private static JoinAnnouncement joinAnnouncement;
 
     public static void addAnnouncement(Announcement announcement){
         announcements.put(announcement.getName().toLowerCase(), announcement);
@@ -37,6 +40,10 @@ public class AnnouncementManager {
         return announcements.values();
     }
 
+    public static JoinAnnouncement getJoinAnnouncement() {
+        return joinAnnouncement;
+    }
+    
     /**
      * @return interval in ticks
      */
@@ -103,6 +110,23 @@ public class AnnouncementManager {
             config.set("announcements.event.messages", new String[]{
                     "<rainbow>A event has started!</rainbow>",
                     "<blue>Join now with /event</blue>"
+            });
+        }
+
+        if(config.isConfigurationSection("join_announcement")){
+            List<String> messages = config.getStringList("join_announcement.messages");
+
+            Component[] messagesParsed = new Component[messages.size()];
+
+            for (int i = 0; i < messages.size(); i++) {
+                messagesParsed[i] = MiniMessage.miniMessage().deserialize(messages.get(i));
+            }
+
+            joinAnnouncement = new JoinAnnouncement("join", messagesParsed);
+        } else {
+            config.set("join_announcement.messages", new String[]{
+                    "<green>Welcome back to xyz!</green>",
+                    "<green>View your mails with /mail read</green>"
             });
         }
 

@@ -1,10 +1,6 @@
 package de.oliver.announcer;
 
 import de.oliver.announcer.commands.AnnouncerCMD;
-import de.oliver.announcer.types.ActionBarAnnouncement;
-import de.oliver.announcer.types.ChatAnnouncement;
-import net.kyori.adventure.text.Component;
-import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 

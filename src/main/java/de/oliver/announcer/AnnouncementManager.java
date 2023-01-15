@@ -4,7 +4,6 @@ import de.oliver.announcer.types.ActionBarAnnouncement;
 import de.oliver.announcer.types.ChatAnnouncement;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.MiniMessage;
-import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
 
 import java.util.*;

@@ -1,0 +1,21 @@
+interval: 180
+announcements:
+  help:
+    type: chat
+    messages:
+      - <dark_red>---------------------------------------------------</dark_red>
+      - <red>You need help or want to see all features? - /help!!!!</red>
+      - <dark_red>---------------------------------------------------</dark_red>
+  store:
+    type: actionbar
+    messages:
+      - <dark_red>Visit our store at store.placeholder.com</dark_red>
+  test:
+    type: title
+    messages:
+      - <rainbow>test rainbow title</rainbow>
+      - <blue>test test test test</blue>
+join_announcement:
+  messages:
+    - <green>Welcome back to xyz!</green>
+    - <green>View your mails with /mail read</green>

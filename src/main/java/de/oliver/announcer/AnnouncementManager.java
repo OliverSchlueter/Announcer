@@ -43,7 +43,7 @@ public class AnnouncementManager {
     public static JoinAnnouncement getJoinAnnouncement() {
         return joinAnnouncement;
     }
-    
+
     /**
      * @return interval in ticks
      */
@@ -61,6 +61,7 @@ public class AnnouncementManager {
         if(!config.isSet("interval")){
             interval = 60*3;
             config.set("interval", interval);
+            Announcer.getInstance().saveConfig();
         } else {
             interval = config.getInt("interval");
         }
@@ -93,24 +94,6 @@ public class AnnouncementManager {
                 }
             }
 
-        } else {
-            config.set("announcements.help.type", "chat");
-            config.set("announcements.help.messages", new String[]{
-                    "<dark_red>---------------------------------------------------</dark_red>",
-                    "<red>You need help or want to see all features? - /help</red>",
-                    "<dark_red>---------------------------------------------------</dark_red>",
-            });
-
-            config.set("announcements.store.type", "actionbar");
-            config.set("announcements.store.messages", new String[]{
-                    "<dark_red>Visit our store at store.placeholder.com</dark_red>"
-            });
-
-            config.set("announcements.event.type", "title");
-            config.set("announcements.event.messages", new String[]{
-                    "<rainbow>A event has started!</rainbow>",
-                    "<blue>Join now with /event</blue>"
-            });
         }
 
         if(config.isConfigurationSection("join_announcement")){
@@ -123,14 +106,9 @@ public class AnnouncementManager {
             }
 
             joinAnnouncement = new JoinAnnouncement("join", messagesParsed);
-        } else {
-            config.set("join_announcement.messages", new String[]{
-                    "<green>Welcome back to xyz!</green>",
-                    "<green>View your mails with /mail read</green>"
-            });
         }
 
-        Announcer.getInstance().saveConfig();
+
     }
 
 }

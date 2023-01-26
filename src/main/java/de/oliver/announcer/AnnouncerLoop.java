@@ -18,6 +18,7 @@ public class AnnouncerLoop implements Runnable {
         }
 
         Announcement announcement = announcements.poll();
+        announcements.offer(announcement);
 
         if(!(announcement instanceof Loopable loopable)){
             return;
@@ -30,7 +31,6 @@ public class AnnouncerLoop implements Runnable {
             announcement.send();
         }
 
-        announcements.offer(announcement);
     }
 
     public Queue<Announcement> getAnnouncements() {

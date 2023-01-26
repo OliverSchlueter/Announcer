@@ -1,5 +1,6 @@
 package de.oliver.announcer;
 
+import de.oliver.announcer.commands.AnnouncementCMD;
 import de.oliver.announcer.commands.AnnouncerCMD;
 import de.oliver.announcer.listeners.PlayerJoinListener;
 import org.bukkit.Bukkit;
@@ -19,6 +20,7 @@ public class Announcer extends JavaPlugin {
     @Override
     public void onEnable() {
         getCommand("Announcer").setExecutor(new AnnouncerCMD());
+        getCommand("Announcement").setExecutor(new AnnouncementCMD());
 
         AnnouncementManager.loadAnnouncements();
 

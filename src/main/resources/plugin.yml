@@ -7,3 +7,6 @@ commands:
   Announcer:
     permission: announcer.admin
     description: main command for the announcer plugin
+  Announcement:
+    permission: announcer.admin
+    description: pause or resume announcements

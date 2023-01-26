@@ -23,7 +23,10 @@ public class AnnouncerLoop implements Runnable {
             return;
         }
 
-        if(!loopable.isPaused()){
+        if(loopable.isPaused()){
+            run();
+            return;
+        } else {
             announcement.send();
         }
 

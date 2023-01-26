@@ -28,7 +28,7 @@ public class AnnouncementManager {
         announcements.remove(name);
     }
 
-    public static  Announcement getAnnouncement(String name){
+    public static Announcement getAnnouncement(String name){
         if(announcements.containsKey(name.toLowerCase())){
             return announcements.get(name.toLowerCase());
         }
